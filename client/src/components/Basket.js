@@ -52,7 +52,7 @@ const Price = styled.h3`
 
 function Basket() {
 
-    const cart = useSelector((state) => state.productReducer);
+    const cart = useSelector((state) => state.productReducer.products);
 
     const dispatch = useDispatch();
 
@@ -61,6 +61,24 @@ function Basket() {
     };
 
     
+    const CartRender = ({products}) =>{
+        if (products === 0){
+            <h3>No Products in cart</h3>
+        }
+        return(
+            products.map(item  =>{
+                
+                return( 
+                    <OrderItem>
+                        <FoodTitle>{item.title}</FoodTitle>
+                        <Quantity/>{item.quantity}   
+                        <Price>6$</Price>     
+                        <DeleteButton><TrashIcon onClick={() =>deleteItem(item.id)}/></DeleteButton>  
+                    </OrderItem>)
+                
+            })
+        )
+    }
 
     return (
     //    <OrdersContainer>
@@ -95,7 +113,7 @@ function Basket() {
      <></>
     </DescriptionContainer>
     
-        {cart.map(car=>{
+        {/* {cart.map(car=>{
             return(<OrderItem>
                 <FoodTitle>{car.products.title}</FoodTitle>
                 <Quantity/>{car.quantity}
@@ -104,7 +122,8 @@ function Basket() {
                 </OrderItem>)
                 
         })}
-     
+         */}
+     <CartRender products={cart}/>
 
     
 

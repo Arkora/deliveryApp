@@ -11,7 +11,11 @@ const initialState = {
         return {...state,products:[...state.products,payload] }; 
         
       case REMOVE_CART:
-        return{...state,products:state.products.filter((item,id)=> id !== payload)} ; 
+            let clone = state.products;
+            clone.splice(payload,1);
+            return clone;
+
+        //return{...state,products:state.products.filter((item,id)=> id !== payload)} ; 
       default:
         return state;
     }

@@ -7,6 +7,7 @@ export const Foods = styled.div`
     width: 99%;
     margin: auto;
     overflow: auto;
+    overflow-y: scroll;
     
 `
 

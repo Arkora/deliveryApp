@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import React from 'react';
+
+
+
 export const OuterContainer = styled.div`
 width: 100%;
 height: 100%;
 display: flex;
+overflow-y: hidden;
 
 
 `
@@ -36,6 +40,7 @@ export const InnerContainer = styled.div`
 width: 750px;
 height: 800px;
 background-color: #0c2431 ;
+overflow-y: hidden;
 //display: flex;
 /* position: absolute;
 top: 50%;

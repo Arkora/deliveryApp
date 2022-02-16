@@ -1,12 +1,10 @@
-import FoodForm from './components/FoodForm';
-import './App.css';
+
+import FoodUpload from './pages/FoodUpload';
 
 function App() {
   return (
     <div className="App">
-      <h2>admin panel</h2>
-      <h2>orders panel</h2>
-      <FoodForm/>
+        <FoodUpload/>
     </div>
   );
 }
