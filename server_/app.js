@@ -1,9 +1,15 @@
-const express = require("express");
+import express from "express";
+import router from "./routes/foodRoutes.js";
+import { createFood } from "./controllers/foodController.js";
 
 const app = express();
 
-app.get('/',(req,res) => {
-    res.send("hello");
+const PORT = 8000;
+
+app.get('/',(req,res) =>{
+    res.send("Hello");
 });
 
-app.listen(8000);
+router.post('/uploadFood', createFood);
+
+app.listen(PORT)

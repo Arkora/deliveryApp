@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Basket from "./Basket";
 import {House}  from "@styled-icons/bootstrap";
 import {Basket3 as Basket2}  from "@styled-icons/bootstrap";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 export const HeaderDiv = styled.div `
 height: 30px;
@@ -86,8 +88,14 @@ export const Quantity = styled.h5`
 
 export const Header = () =>{
 
-    const [orders, setOrders] = useState(0);
 
+
+    const products = useSelector((state) => state.productReducer.products);
+
+    
+    useEffect(() =>{
+       
+    },[products]);
   
 
     return(
@@ -95,7 +103,7 @@ export const Header = () =>{
             <Link to="/"><MenuButton > <HomeIcon/> </MenuButton>  </Link>
             
             <SearchBar placeholder="Search" />             
-          <Link to="/orders" > <BasketButton  >  <BasketIcon /> <Orders><Quantity>{orders}</Quantity></Orders>  </BasketButton></Link>
+          <Link to="/orders" > <BasketButton  >  <BasketIcon /> <Orders><Quantity>{products.length}</Quantity></Orders>  </BasketButton></Link>
         </HeaderDiv>
     );
 }

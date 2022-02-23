@@ -6,130 +6,81 @@ import { Trash } from "@styled-icons/bootstrap";
 import { productReducer } from "../redux/reducers/CartReducer";
 import { deleteCart } from "../redux/actions/Actions";
 
-
 const OrdersContainer = styled.div`
-    
-    margin: auto;
-    margin-top: 30px;
-`
+  margin: auto;
+  margin-top: 30px;
+`;
 const OrderItem = styled.div`
-   background-color: #194a50;
-height: 80px;
-width: 100%;
-display: grid;
-border: 1px white solid;
-margin-top: 2px;
-grid-template-columns:repeat(4,1fr);
-`
-const FoodTitle = styled.h3`
-
-`
+  background-color: #194a50;
+  height: 80px;
+  width: 100%;
+  display: grid;
+  border: 1px white solid;
+  margin-top: 2px;
+  grid-template-columns: repeat(4, 1fr);
+`;
+const FoodTitle = styled.h3``;
 const DeleteButton = styled.button`
-    height: 20px;
-    width: 20px;
-    
-`
+  height: 20px;
+  width: 20px;
+`;
 const TrashIcon = styled(Trash)`
-    height: 15px;
-    width: 15px;
-    margin:auto;
-`
+  height: 15px;
+  width: 15px;
+  margin: auto;
+`;
 const Quantity = styled.input`
-    height: 20px;
-    width: 40px;
-
-`
+  height: 20px;
+  width: 40px;
+`;
 const DescriptionContainer = styled.div`
-    display: grid;
-    grid-template-columns:repeat(4,1fr);
-    color: #ffff;
-    
-`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  color: #ffff;
+`;
 
-const Price = styled.h3`
-    
-`
+const Price = styled.h3``;
 
 function Basket() {
+  const products = useSelector((state) => state.productReducer.products);
 
-    const cart = useSelector((state) => state.productReducer.products);
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const deleteItem = () => {
+    dispatch(deleteCart());
+  };
 
-    const deleteItem = (id) => {
-        dispatch(deleteCart(id));
-    };
+  
 
-    
-    const CartRender = ({products}) =>{
-        if (products === 0){
-            <h3>No Products in cart</h3>
-        }
-        return(
-            products.map(item  =>{
-                
-                return( 
-                    <OrderItem>
-                        <FoodTitle>{item.title}</FoodTitle>
-                        <Quantity/>{item.quantity}   
-                        <Price>6$</Price>     
-                        <DeleteButton><TrashIcon onClick={() =>deleteItem(item.id)}/></DeleteButton>  
-                    </OrderItem>)
-                
-            })
-        )
-    }
-
-    return (
-    //    <OrdersContainer>
-    //        <DescriptionContainer> 
-    //         <h3>Product</h3>
-    //         <h3>Quantity</h3>
-    //         <h3>Price</h3> 
-    //         <></>
-    //        </DescriptionContainer>
-    //        <OrderItem>
-    //         <FoodTitle>Fish free</FoodTitle>
-    //         <Quantity/>
-    //         <Price>6$</Price>
-    //         <DeleteButton onClick={deleteItem(1)}><TrashIcon/></DeleteButton>
-
-    //        </OrderItem>
-
-    //        <OrderItem>
-    //         <FoodTitle>Fish free</FoodTitle>
-    //         <Quantity/>
-    //         <Price>6$</Price>
-    //         <DeleteButton><TrashIcon/></DeleteButton>
-    //        </OrderItem>
-           
-    //    </OrdersContainer>
-
+  return (
     <OrdersContainer>
-    <DescriptionContainer> 
-     <h3>Product</h3>
-     <h3>Quantity</h3>
-     <h3>Price</h3> 
-     <></>
-    </DescriptionContainer>
-    
-        {/* {cart.map(car=>{
-            return(<OrderItem>
-                <FoodTitle>{car.products.title}</FoodTitle>
-                <Quantity/>{car.quantity}
-                <Price>6$</Price>
-                <DeleteButton><TrashIcon/></DeleteButton>
-                </OrderItem>)
-                
-        })}
-         */}
-     <CartRender products={cart}/>
-
-    
-
-</OrdersContainer>
-
-    )
+      <DescriptionContainer>
+        <h3>Product</h3>
+        <h3>Quantity</h3>
+        <h3>Price</h3>
+        <></>
+      </DescriptionContainer>
+      { products === 0 ? (
+        <div>
+          <h4>No Products</h4>
+        </div>
+      ) : (
+        products.map((product, i) => {
+          return (
+            <OrderItem>
+              <FoodTitle>{product.title}</FoodTitle>
+              <Quantity />
+              {product.quantity}
+              <Price>6$</Price>
+              <DeleteButton>
+                <TrashIcon onClick={() => deleteItem()} />
+              </DeleteButton>
+            </OrderItem>
+          );
+        })
+      )}
+    </OrdersContainer>
+  );
 }
 
-export default Basket
+export default Basket;
