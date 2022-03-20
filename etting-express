@@ -1,0 +1,17 @@
+[33mcommit 29b9ffd1b6044a381292619c9920b874edc9c4ab[m[33m ([m[1;36mHEAD -> [m[1;32msetting-express[m[33m, [m[1;31morigin/setting-express[m[33m)[m
+Author: Arko Rapollari <rapolari98@hotmail.com>
+Date:   Wed Feb 23 20:51:07 2022 +0200
+
+    setting up api
+
+[33mcommit cdef0d06acf035fab91573b2bbfd9477c8a7bc21[m
+Author: arkora <rapolari98@hotmail.com>
+Date:   Wed Feb 16 18:20:19 2022 +0200
+
+    api created
+
+[33mcommit e9faff316373904a484def4088c8d9f562647780[m[33m ([m[1;32mmaster[m[33m)[m
+Author: arkora <rapolari98@hotmail.com>
+Date:   Fri Nov 5 19:48:18 2021 +0200
+
+    init
