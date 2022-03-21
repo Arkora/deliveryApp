@@ -1,4 +1,4 @@
-import { ADD_INGRENDIENT,REMOVE_INGRENDIENT } from "../constants/ActionTypes";
+import { ADD_INGRENDIENT,REMOVE_INGRENDIENT,RESET_INGRENDIENTS } from "../constants/ActionTypes";
 
 const initialState = {
       
@@ -16,11 +16,9 @@ export const ingrendientsReducer = (state = initialState,{type,payload}) =>{
             let clone = state.ingrendients;
             clone.splice(payload,1);
             state =  clone
-            return {ingrendients:clone};
-
-            
-                            
-             //   return { ingrendients:[...state.ingrendients.filter(ingrendient => ingrendient !== payload)]}
+            return {ingrendients:clone};           
+        case RESET_INGRENDIENTS:
+            return{ingrendients:[]};                   
             
         default:
             return state;

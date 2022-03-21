@@ -1,10 +1,57 @@
-import { v4 } from "uuid";
+import mongoose from 'mongoose'
+import Food from '../models/Food.js';
 
-let foods = [];
 
-export const createFood = (req,res) =>{
-    const food = req.body;
+export const createFood = async (req,res) =>{
+    const food = new Food({
+        title : req.body.title,
+        price : req.body.price,
+        img : req.body.img,
+        ingrendients: req.body.ingrendients,
+        category : req.body.category
+    })
 
-    foods.push({...food,id: uuid()});
-    console.log(`Food [${food.title}] added to datatabase`);
+    
+      
+       try{
+           Food.findOne({title:food.title}, function(err,data){
+               if(err) console.log(err)
+               if(data){
+                   res.send("Food already saved")
+               }else{
+                  food.save()    
+                 .then(res.status(201).send(food.title +" " +"Added on db"))
+                 .catch(err =>{
+                     res.send({message:err})
+                 }) 
+               }
+           }) 
+       }catch(err){
+            console.log(err)
+       }
+        
+    
+    
+    
+}
+
+export const getAllFoods  = async (req,res) =>{
+  
+  try{
+    const foods = await Food.find();
+    res.send(foods);
+  }catch(err){
+      console.log(err)
+  }
+   
+}
+
+export const getById = async(req,res) =>{
+    try{
+        const food = await Food.findById(req.params.id)
+        res.send(food)
+    }catch(err){
+        console.log(err)
+    }
+    
 }

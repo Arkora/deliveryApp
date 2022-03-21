@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import AdminPanel from '../components/AdminPanel'
 import FoodsList from '../components/FoodsList'
 import { Search as SearchIcon} from '@styled-icons/bootstrap/Search'
-
-
+import { resetIngrendients } from '../redux/actions/Actions'
+import { useDispatch } from 'react-redux'
 
 const SearchbarSection = styled.div`
  height: 50px;
@@ -45,6 +45,7 @@ const Grid = styled.div`
 
 
 function Foods() {
+  const dispatch = useDispatch(); 
 
   const [foods,setFoods] = useState([]);
 
@@ -65,6 +66,7 @@ function Foods() {
 
   useEffect(()=>{
     fetchData();   
+    dispatch(resetIngrendients());
   },[])
 
  
@@ -95,8 +97,10 @@ function Foods() {
                   title={item.title} 
                   img={item.img} 
                   ingrendients={item.ingrendients} 
-                  price={item.pirce} />)
+                  price={item.price} />)
+                  
           })
+          
           }        
         </ContentSection>  
         

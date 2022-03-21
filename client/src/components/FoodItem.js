@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import {Cart} from 'styled-icons/bootstrap'
 import { addCart } from "../redux/actions/Actions";

@@ -1,15 +1,15 @@
 import express from "express";
-import { createFood } from "../controllers/foodController.js";
+import { createFood,getAllFoods, getById } from "../controllers/foodController.js";
 
 const router = express.Router();
 
-router.get('/foods');
+router.get('/', getAllFoods);
 
-router.get('/foodByCategory:category');
+router.get('/category:category');
 
-router.post('/uploadFood', createFood);
+router.post('/upload', createFood);
 
-router.get('/:id');
+router.get('/:id',getById);
 
 router.delete('/:id');
 

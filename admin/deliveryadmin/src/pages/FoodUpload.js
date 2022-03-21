@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import FoodForm from '../components/FoodForm'
-import Food from '../components/Food'
+import { useSelector,useDispatch} from "react-redux";
+import { resetIngrendients } from '../redux/actions/Actions';
+import AdminPanel from '../components/AdminPanel';
+import axios from 'axios';
 
-const OrdersSection = styled.div`
-    height:100hv;
-    background-color: lightgray;
-`
+
+
 
 
 const FormSection = styled.div`
@@ -26,18 +27,44 @@ const PreviewSection = styled.div`
 
 function FoodUpload() {
 
-    const pro= {id:"4",title: 'Pancake', img: 'https://images.pexels.com/photos/7144893/pexels-photo-7144893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',ingrendients:[],price:"6"}
-    const [food, setFood] = useState({title:"Title",img:"img",ingrendients:[],price:"0"})
-    // const FoodList= {title:"",img:"",ingrendients:[],price:"0"};
+    const [food, setFood] = useState({})
+    const [isClicked,setIsClicked] = useState(false);
+    const ingrendients = useSelector(
+        (state) => state.ingrendientsReducer.ingrendients
+      );
+
+    const dispatch = useDispatch(); 
+
+    const postFood = async () =>{
+        const response = await axios.post("http://localhost:8000/foods/upload",food) 
+            .catch((err) =>{
+                console.log(err)
+            })
+
+            alert(response.data)
+            if(response.status === 201){
+                dispatch(resetIngrendients())
+                setFood({})
+            }
+    }
+    
+    useEffect(() =>{              
+        if(isClicked){
+         postFood()
+         setIsClicked(false)
+        }
+        
+    },[isClicked,food])  
 
     return (
-        <OrdersSection>
+        <div>
+        <AdminPanel />
             <FormSection>
-                <FoodForm setFood={setFood} ></FoodForm>
+                <FoodForm setFood={setFood} ingrendients={ingrendients} setIsClicked={setIsClicked} ></FoodForm>
             </FormSection>
             
-        </OrdersSection>
-       
+        
+        </div>
     )
 }
 

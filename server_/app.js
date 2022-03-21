@@ -1,15 +1,28 @@
 import express from "express";
-import router from "./routes/foodRoutes.js";
-import { createFood } from "./controllers/foodController.js";
+import bodyParser from 'body-parser';
+import mongoose from "mongoose";
+import foodRouter from "./routes/foodRoutes.js";
+import Cors from 'cors'
+import dotenv from 'dotenv'
 
+dotenv.config();
 const app = express();
 
 const PORT = 8000;
 
+app.use(Cors());
+app.use(bodyParser.json());
+
+app.use("/foods",foodRouter);
+
+
+
 app.get('/',(req,res) =>{
-    res.send("Hello");
+    res.send("Api v1.0");
 });
 
-router.post('/uploadFood', createFood);
+mongoose.connect(process.env.DB_CONNECTION,()=>{
+    console.log("DB Connected")
+})
 
 app.listen(PORT)

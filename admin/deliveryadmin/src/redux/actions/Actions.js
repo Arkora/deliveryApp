@@ -1,4 +1,4 @@
-import { ADD_INGRENDIENT,REMOVE_INGRENDIENT } from "../constants/ActionTypes";
+import { ADD_INGRENDIENT,REMOVE_INGRENDIENT,RESET_INGRENDIENTS } from "../constants/ActionTypes";
 
 export const addIngrendient = (data) =>{
     return{
@@ -12,4 +12,10 @@ export const removeIngrendient = (id) =>{
         type:REMOVE_INGRENDIENT,
         payload:id
     };
+}
+
+export const resetIngrendients = () =>{
+    return{
+        type:RESET_INGRENDIENTS
+    }
 }

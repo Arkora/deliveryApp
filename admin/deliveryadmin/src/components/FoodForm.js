@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Food from "./Food";
 import { addIngrendient } from "../redux/actions/Actions";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { useDispatch} from "react-redux";
+
 
 const Form = styled.div`
   display: flex;
@@ -33,11 +33,9 @@ const PreviewSection = styled.div`
   width: max-content;
 `;
 
-function FoodForm() {
+function FoodForm(props) {
   const dispatch = useDispatch();
-  const ingrendients = useSelector(
-    (state) => state.ingrendientsReducer.ingrendients
-  );
+  
 
   const [title, setTitle] = useState("");
   const [imgUrl, setImgUrl] = useState("");
@@ -48,7 +46,7 @@ function FoodForm() {
   const product = {
     title: title,
     img: imgUrl,
-    ingrendients: ingrendients,
+    ingrendients: props.ingrendients,
     price: price,
     category:category,
   };
@@ -60,24 +58,41 @@ function FoodForm() {
   };
 
   const setFood = (product) =>{
-    //   if( (product.ingrendients.length === 0) ||( product.category || product.title || product.price || product.img)  === "" ){
-    //     alert("Fill all textboxes")
-    //   }
-    //   else{
-    //       alert("OK")
-    //   }
+      if( (product.ingrendients.length === 0) ||
+      ( product.category === "" ||
+        product.title === "" ||
+        product.price === "" ||
+         product.img === "")   ){
+        alert("Fill all textboxes")
+      }
+      else{
+          props.setFood(product)
+          props.setIsClicked(true)          
+      }
 
-    axios.post("http://localhost:8000/uploadFood" ,{product})
     
         
   }
 
 
-  console.log(product)
+  const passData = () =>{
+    const food = props.food
+    product.title = food.title
+    product.price = food.price
+    product.img = food.img
+    product.category = food.category
+  }
+
+  useEffect(() =>{
+    if(props.isLoaded){
+      passData()
+    }
+    console.log(product.title + " " + product.category + " " + product.price)
+  },[product])
 
   return (
     <Form>
-      <h1>Upload food</h1>
+      <h1>Upload/Update Food</h1>
       <InputBox
         placeholder="Title"
         value={title}
@@ -118,13 +133,13 @@ function FoodForm() {
             <option value="dessert">Dessert</option>
             <option value="coffee">Coffee</option>
        </select>
-      <UploadButton onClick={(e) => setFood(product)}>Upload it</UploadButton>
+      <UploadButton onClick={(e) => setFood(product)}>Save</UploadButton>
 
       <PreviewSection>
         <Food
           title={product.title}
           img={product.img}
-          ingrendients={ingrendients}
+          ingrendients={product.ingrendients}
           price={product.price}
           category={product.category}
         />
