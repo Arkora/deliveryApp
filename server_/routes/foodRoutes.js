@@ -1,18 +1,13 @@
 import express from "express";
-import { createFood,getAllFoods, getById } from "../controllers/foodController.js";
+import { createFood,deleteFood,getAllFoods, getById ,updateFood } from "../controllers/foodController.js";
 
 const router = express.Router();
 
 router.get('/', getAllFoods);
-
-router.get('/category:category');
-
-router.post('/upload', createFood);
-
 router.get('/:id',getById);
-
-router.delete('/:id');
-
-router.patch('/:id');
+router.post('/upload', createFood);
+router.get('/category:category');
+router.delete('/:id',deleteFood);
+router.patch('/:id', updateFood);
 
 export default router;

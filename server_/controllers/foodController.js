@@ -39,7 +39,7 @@ export const getAllFoods  = async (req,res) =>{
   
   try{
     const foods = await Food.find();
-    res.send(foods);
+    res.status(200).send(foods);
   }catch(err){
       console.log(err)
   }
@@ -49,9 +49,37 @@ export const getAllFoods  = async (req,res) =>{
 export const getById = async(req,res) =>{
     try{
         const food = await Food.findById(req.params.id)
-        res.send(food)
+        res.status(200).send(food)
     }catch(err){
         console.log(err)
     }
     
+}
+
+export const updateFood = async(req,res) =>{
+    const {id} = req.params
+    const {title,price,img,ingrendients,category} = req.body;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No Food with id: ${id}`);
+
+    const updatedFood = {title,price,img,ingrendients,category,_id:id}
+
+    try {
+        await Food.findByIdAndUpdate(id,updatedFood)
+        res.status(200).send(title +" " +"Updated")
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+export const deleteFood = async(req,res) =>{
+    const {id} = req.params
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No Food with id: ${id}`);
+    try {
+       await Food.findByIdAndDelete(id)
+       res.status(200).send("Deleted")
+
+    } catch (err) {
+        console.log(err)
+    }
 }

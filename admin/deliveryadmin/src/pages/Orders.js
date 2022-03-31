@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import AdminPanel from '../components/AdminPanel'
+import AdminPanel from '../components/adminPanel/AdminPanel'
 
 const ContentSection = styled.div`
     height: 80vh;

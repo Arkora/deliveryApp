@@ -1,11 +1,10 @@
-import axios from 'axios'
 import React, { useEffect,useState } from 'react'
 import {useParams} from 'react-router-dom'
 import styled from 'styled-components';
-import AdminPanel from '../components/AdminPanel';
-import FoodForm from '../components/FoodForm';
-import { useDispatch,useSelector} from 'react-redux';
-import { addIngrendient,resetIngrendients } from "../redux/actions/Actions";
+import AdminPanel from '../components/adminPanel/AdminPanel';
+import Form from '../components/form/Form';
+import { getFood } from '../api';
+
 
 
 
@@ -25,52 +24,26 @@ function FoodUpdate() {
 
 const {id}  = useParams();
 const [food,setFood] = useState({});
-const [buttonClicked,setButtonClicked] = useState(false)
 const [isLoaded, setIsLoaded] = useState(false)
 
-
-const dispatch = useDispatch();
-
-const ingrendients = useSelector(
-  (state) => state.ingrendientsReducer.ingrendients
-  );
-
-
 const fetchData = async () =>{
-   const response = await axios.get(`http://localhost:8000/foods/${id}`)  
-    .catch((err) =>{
-      console.log(err);     
-    });
-    
-    setFood(response.data)
+    try{
+      const {data} = await getFood(id)
+      setFood(data)
+      setIsLoaded(true)
+    }catch (error){
+      console.log(error.message)
+    }
+     
+  
+}
 
-    setTimeout(()=>{
-        if(food === undefined){
-          console.log(" ")
-        }else{
-          
-          response.data.ingrendients.forEach(element =>{
-            dispatch(addIngrendient(element))
-          })
-          
-        }
-        
-        
-    },10)
-
-    clearTimeout()
-    
-    
-        
-}  
+useEffect(() => {
+  fetchData()  
+}, [])
 
 
-useEffect(() =>{     
-   
-    fetchData()    
-    setIsLoaded(true)     
-    dispatch(resetIngrendients())
-},[])
+
 
 
 
@@ -79,27 +52,17 @@ useEffect(() =>{
     <div>
         <AdminPanel/>
         <FormSection>
-          {/* { isLoaded === true ?
-               <FoodForm 
-                isLoaded={isLoaded}
-                setIsLoaded= {setIsLoaded}
-                food={food}
-                ingrendients={ingrendients}
-                setFood={setFood}
-                setButtonClicked={setButtonClicked}
+          { isLoaded === true ?
+               <Form 
+                id={id}
+                foodToUpload={food}
+                
               />:
               <div>
                <h2>...Loading</h2> 
               </div>
-          }      */}
-          <FoodForm 
-                isLoaded={isLoaded}
-                setIsLoaded= {setIsLoaded}
-                food={food}
-                ingrendients={ingrendients}
-                setFood={setFood}
-                setButtonClicked={setButtonClicked}
-              />      
+          }     
+              
         
          
         </FormSection>

@@ -1,8 +1,6 @@
 import {combineReducers} from 'redux';
-import {ingrendientsReducer} from './IngrendientsReducer';
+import {foodsReducer} from './foods';
 
-const reducers = combineReducers({
-    ingrendientsReducer
-});
+const reducers = combineReducers({foodsReducer});
 
 export default reducers;

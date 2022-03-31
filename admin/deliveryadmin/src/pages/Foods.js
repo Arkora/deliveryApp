@@ -1,11 +1,11 @@
-import axios from 'axios'
-import React, { useState,useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import AdminPanel from '../components/AdminPanel'
-import FoodsList from '../components/FoodsList'
+import AdminPanel from '../components/adminPanel/AdminPanel'
+import FoodsList from '../components/foodsList/FoodsList'
 import { Search as SearchIcon} from '@styled-icons/bootstrap/Search'
-import { resetIngrendients } from '../redux/actions/Actions'
-import { useDispatch } from 'react-redux'
+import {useDispatch,useSelector} from 'react-redux'
+import { getFoods } from '../redux/actions/foods'
+
 
 const SearchbarSection = styled.div`
  height: 50px;
@@ -44,33 +44,16 @@ const Grid = styled.div`
 
 
 
-function Foods() {
-  const dispatch = useDispatch(); 
-
-  const [foods,setFoods] = useState([]);
-
-  const fetchData = async () =>{
-    const response = await axios
-    .get("http://localhost:8000/foods")
-    .catch((err) =>{
-      console.log(err);
-      
-    });
-    setFoods(response.data);
-    
-    
-  }
-
+function Foods() { 
+  
+  const dispatch = useDispatch();
+  const foods = useSelector((state) => state.foodsReducer.products)
   
 
-
+   
   useEffect(()=>{
-    fetchData();   
-    dispatch(resetIngrendients());
-  },[])
-
- 
-  
+    dispatch(getFoods())    
+  },[]) 
   
 
   return (
@@ -87,9 +70,9 @@ function Foods() {
 
         
         <ContentSection>
-          {foods.length === 0 ? 
+          {foods?.length === 0 || foods === undefined ? 
             <div>
-            <h4>Database dont return data</h4>
+            <h4>Loading...</h4>
           </div>
           : foods.map((item) =>{
             return(<FoodsList
