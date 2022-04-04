@@ -1,20 +1,21 @@
-import {Main,OuterContainer,InnerContainer,HeaderContainer,ItemContainer,FoodContainer} from '../components/MainContainer'
+import {Main,OuterContainer,InnerContainer,HeaderContainer} from '../components/MainContainer'
 import {Header} from '../components/Header'
-import React from 'react';
-import FoodList from '../components/FoodList';
-import Categories from '../components/Categories';
-import styled from 'styled-components';
+import React,{useState} from 'react';
+
 import Basket from '../components/Basket';
 
 
 const Orders = () => {
+  const [category,setCategory] = useState("")
+  const [search,setSearch] = useState("")
+
     return(
         <OuterContainer>       
           <Main>
             <InnerContainer>
               <HeaderContainer>
-                <Header />
-                <Categories/>
+                <Header  setCategory = {setCategory} setSearch = {setSearch}/>
+                
               </HeaderContainer>
               <Basket>
         

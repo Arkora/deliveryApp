@@ -22,12 +22,14 @@ const removeIngrendient = (item) =>{
 const handleDelete = async (e) =>{
   
   try{
-      const {data} = await deleteFood(id)
-      alert(data)   
-      navigate("/")   
-  }catch(error){
-    console.log(error)
-  }
+    if(window.confirm("Are you sure want to delete this item?")){
+        await deleteFood(id)                 
+        navigate("/")   
+    }
+    
+}catch(error){
+  console.log(error)
+}
 }
 
 const handleForm = async (e) =>{ 
@@ -35,7 +37,7 @@ const handleForm = async (e) =>{
     try {
       const {data,status} = await updateFood(id,food)
       alert(data)    
-      
+      navigate("/")   
     } catch (error) {
       console.log(error.message)
     }
@@ -73,7 +75,7 @@ useEffect(() => {
           <InputBox name="igrendient" label="Ingrendient"  placeholder="Ingrendient" value={ingrendient} onChange={(e) =>setIngrendient(e.target.value)} />
           <AddButton onClick={pushIngrendient}>Add</AddButton>
         </Col2>
-        <select className="category-select" onChange={(e) => setFood({...food, category: e.target.value})} >
+        <select className="category-select" value={food.category} onChange={(e) => setFood({...food, category: e.target.value})} >
               <option value="">Select Category</option>
               <option value="meat">Meat</option>
               <option value="pizza">Pizza</option>
