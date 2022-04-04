@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import React from 'react';
 
 
 
@@ -10,6 +9,7 @@ display: flex;
 overflow-y: hidden;
 
 
+
 `
 
 export const Main = styled.div`
@@ -18,34 +18,21 @@ height: 850px;
 background-color: #e1dad2;
 display: flex;
 margin: auto;
-/* position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%); */
 width: 800px;
 height: 850px;
 background-color: #e1dad2;
-
-display: flex;
-margin: auto;
-    margin-top: auto;
-    margin-bottom: auto;
 margin-top: 50px;
 margin-bottom: 50px;
 border-radius: 20px;
 box-shadow: 10px 1px 60px 10px grey;
+overflow-y:hidden ;
 `;
 
 export const InnerContainer = styled.div`
 width: 750px;
 height: 800px;
 background-color: #0c2431 ;
-overflow-y: hidden;
-//display: flex;
-/* position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%); */
+overflow-y: scroll;
 margin: auto;
 `;
 
