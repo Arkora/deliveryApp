@@ -1,12 +1,6 @@
-// import {Main,OuterContainer,InnerContainer,HeaderContainer,ItemContainer,FoodContainer} from './components/MainContainer'
-// import {Header} from './components/Header'
 import React from 'react';
-// import FoodItem from './components/FoodItem';
-// import FoodList from './components/FoodList';
-// import Categories from './components/Categories';
 import Home from './pages/Home';
-// import { BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
-import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Orders from './pages/Orders';
 
 

@@ -1,14 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import {Main,OuterContainer,InnerContainer,HeaderContainer,FoodContainer} from '../components/MainContainer'
-import {Header} from '../components/Header'
-import FoodList from '../components/FoodList';
-import Categories from '../components/Categories';
+import Header from '../components/nav/Header'
+import FoodList from '../components/foods/FoodList';
+import Categories from '../components/nav/Categories';
 import { fetchFoods, fetchFoodsByCategory,fetchFoodsBySearch } from '../api';
-
-
-
-//const data = [{id:"1",title: 'Pancake', img: 'https://images.pexels.com/photos/7144893/pexels-photo-7144893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',ingrendients:['salt','peper','oil']},{id:"2",title: 'Pancake', img: 'https://images.pexels.com/photos/7144893/pexels-photo-7144893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',ingrendients:['salt','peper','oil']},{id:"3",title: 'Pancake', img: 'https://images.pexels.com/photos/7144893/pexels-photo-7144893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',ingrendients:['salt','peper','oil']},{id:"4",title: 'Pancake', img: 'https://images.pexels.com/photos/7144893/pexels-photo-7144893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',ingrendients:['salt','peper','oil']}];
-
 
 
 const Home = () => {
@@ -65,10 +60,11 @@ const Home = () => {
             <Header setCategory = {setCategory} setSearch = {setSearch} />
             <Categories setCategory = {setCategory} />
           </HeaderContainer>
-          <FoodContainer>
+          
+          
             <FoodList foods = {food} />
-          </FoodContainer>
-                 
+          
+               
         </InnerContainer>        
       </Main>
     </OuterContainer>

@@ -1,8 +1,8 @@
 import {Main,OuterContainer,InnerContainer,HeaderContainer} from '../components/MainContainer'
-import {Header} from '../components/Header'
+import Header from '../components/nav/Header'
 import React,{useState} from 'react';
 
-import Basket from '../components/Basket';
+import Basket from '../components/cart/Basket';
 
 
 const Orders = () => {
