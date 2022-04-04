@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import styled from 'styled-components';
 import AdminPanel from '../components/adminPanel/AdminPanel';
 import Form from '../components/form/Form';
-import { getFood } from '../api';
+import { fetchFood } from '../api';
 
 
 
@@ -28,7 +28,7 @@ const [isLoaded, setIsLoaded] = useState(false)
 
 const fetchData = async () =>{
     try{
-      const {data} = await getFood(id)
+      const {data} = await fetchFood(id)
       setFood(data)
       setIsLoaded(true)
     }catch (error){

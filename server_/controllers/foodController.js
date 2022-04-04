@@ -56,6 +56,22 @@ export const getById = async(req,res) =>{
     
 }
 
+export const getFoodBySearch = async (req, res) => {
+    
+    const { searchQuery} = req.query;
+
+    try {
+        const title = new RegExp(searchQuery, "i");
+
+        const foods = await Food.find({ $or: [ { title }, { ingrendients:  title} ]});
+
+        res.status(200).send(foods);
+    } catch (err) {    
+        res.status(404).send(err.message);
+    }
+     
+ }
+
 export const updateFood = async(req,res) =>{
     const {id} = req.params
     const {title,price,img,ingrendients,category} = req.body;
@@ -80,6 +96,17 @@ export const deleteFood = async(req,res) =>{
        res.status(200).send("Deleted")
 
     } catch (err) {
-        console.log(err)
+        console.log(err.message)
     }
 }
+
+export const getByCategory = async(req,res) =>{
+    const {category} = req.params
+    try {
+        const foods = await Food.find({category:category})
+        res.status(200).send(foods)
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+

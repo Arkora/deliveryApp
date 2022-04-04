@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import styled from 'styled-components'
 import AdminPanel from '../components/adminPanel/AdminPanel'
 import FoodsList from '../components/foodsList/FoodsList'
 import { Search as SearchIcon} from '@styled-icons/bootstrap/Search'
 import {useDispatch,useSelector} from 'react-redux'
-import { getFoods } from '../redux/actions/foods'
+import { getFoods,getFoodsBySearch } from '../redux/actions/foods'
+
 
 
 const SearchbarSection = styled.div`
@@ -47,14 +48,24 @@ const Grid = styled.div`
 function Foods() { 
   
   const dispatch = useDispatch();
+  const [search, setSearch] = useState("")  
   const foods = useSelector((state) => state.foodsReducer.products)
+  
+  
   
 
    
   useEffect(()=>{
-    dispatch(getFoods())    
-  },[]) 
+    if(search === ""){
+      dispatch(getFoods())
+    }else{    
+    dispatch(getFoodsBySearch(search))
+    }
+    
+      
+  },[search]) 
   
+ 
 
   return (
 
@@ -64,7 +75,7 @@ function Foods() {
         
                 
         <SearchbarSection >               
-          <Searchbar />
+          <Searchbar onChange={(e) =>setSearch(e.target.value)}/>
           <Search />           
         </SearchbarSection> 
 
@@ -80,11 +91,11 @@ function Foods() {
                   title={item.title} 
                   img={item.img} 
                   ingrendients={item.ingrendients} 
-                  price={item.price} />)
-                  
-          })
-          
+                  price={item.price} />)                  
+          })          
           }        
+
+
         </ContentSection>  
         
     </Grid>

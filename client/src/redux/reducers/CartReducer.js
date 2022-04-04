@@ -1,14 +1,19 @@
 import { ADD_CART,REMOVE_CART } from "../constants/ActionTypes";
 
 const initialState = {
-    products: []
+    products: [],
+    total: 0,
+    
+    
   };
 
-  export const productReducer = (state =initialState, { type, payload }) => {
+  export const orderReducer = (state =initialState, { type, payload }) => {
     switch (type) {
       case ADD_CART:
+        
 
-        return {...state,products:[...state.products,payload] }; 
+        return {...state,products:[...state.products,payload]}; 
+         
         
       case REMOVE_CART:
             let clone = state.products;

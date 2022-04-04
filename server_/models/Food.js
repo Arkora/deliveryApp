@@ -1,12 +1,8 @@
 import mongoose from "mongoose";
-import { v4 as uuid } from "uuid";
+
 
 const FoodSchema = mongoose.Schema({
-    id:{
-        type: String,
-        default: uuid()
         
-    },    
     title:{
         type: String,
         required: true,

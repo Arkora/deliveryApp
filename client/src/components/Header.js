@@ -3,7 +3,7 @@ import React, {useState,useEffect} from 'react';
 import Basket from "./Basket";
 import {House}  from "@styled-icons/bootstrap";
 import {Basket3 as Basket2}  from "@styled-icons/bootstrap";
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
@@ -86,11 +86,11 @@ export const Quantity = styled.h5`
 
 
 
-export const Header = () =>{
+export const Header = ({setCategory,setSearch}) =>{
 
 
 
-    const products = useSelector((state) => state.productReducer.products);
+    const products = useSelector((state) => state.orderReducer.products);
 
     
     useEffect(() =>{
@@ -100,9 +100,9 @@ export const Header = () =>{
 
     return(
         <HeaderDiv>
-            <Link to="/"><MenuButton > <HomeIcon/> </MenuButton>  </Link>
+           <Link to="/" > <MenuButton  onClick={(e) =>setCategory("")}> <HomeIcon/> </MenuButton> </Link>  
             
-            <SearchBar placeholder="Search" />             
+            <SearchBar placeholder="Search"  onChange={(e) => setSearch(e.target.value)}/>             
           <Link to="/orders" > <BasketButton  >  <BasketIcon /> <Orders><Quantity>{products.length}</Quantity></Orders>  </BasketButton></Link>
         </HeaderDiv>
     );
