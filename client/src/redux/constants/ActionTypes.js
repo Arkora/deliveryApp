@@ -1,2 +1,5 @@
 export const ADD_CART = "ADD_CART";
 export const REMOVE_CART = "REMOVE_CART";
+export const DELETE_INGRENDIENT = "DELETE_INGRENDIENT";
+export const UPDATE_QUANTITY =  "UPDATE_QUANTITY";
+export const DELETE_CART = "DELETE_CART";
