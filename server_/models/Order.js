@@ -27,7 +27,7 @@ const product = new Schema({
 
 
 const OrderSchema = new Schema({
-    products:[product],
+    products:[],
     message:{
         type: String        
     },
