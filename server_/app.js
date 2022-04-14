@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from 'body-parser';
 import mongoose from "mongoose";
 import foodRouter from "./routes/foodRoutes.js";
+import orderRouter from "./routes/orderRoutes.js";
 import Cors from 'cors'
 import dotenv from 'dotenv'
 
@@ -13,6 +14,7 @@ const PORT = 8000;
 app.use(Cors());
 app.use(bodyParser.json());
 
+app.use("/orders",orderRouter)
 app.use("/foods",foodRouter);
 
 

@@ -28,6 +28,7 @@ const pushOrder = (e) =>{
     
     dispatch(addCart({id:id,title:title,price:price,ingrendients:ingrendients,quantity:quantity}));
     setQuantity(0);
+    e.preventDefault();
 }
      
     return(
@@ -53,9 +54,8 @@ const pushOrder = (e) =>{
                 <div>
                     <IncreaseButton onClick={increase} > + </IncreaseButton>
                     <DecreaseButton onClick={decrease} > - </DecreaseButton>
-                    <QuantityInput  value={quantity} onChange={(e) =>setQuantity(e.target.value)} />
-                   {/* // <CartButton onClick={pushOrder} > <CartIcon> <Cart /> </CartIcon> </CartButton> */}
-                   <CartButton onClick={pushOrder} > <CartIcon/>  </CartButton>
+                    <QuantityInput  value={quantity}  onChange={(e) =>setQuantity(e.target.value)} />                   
+                    <CartButton onClick={pushOrder} > <CartIcon/>  </CartButton>
                 </div>
 
             </Grid>

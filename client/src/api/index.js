@@ -9,3 +9,5 @@ export const fetchFoodsBySearch =(searchQuery) => API.get(`/foods/search?searchQ
 export const createFood = (newFood) => API.post('/foods/upload',newFood)
 export const updateFood = (id,updatedFood) => API.patch(`/foods/${id}`,updatedFood)
 export const deleteFood = (id) => API.delete(`/foods/${id}`)
+
+export const createOrder = (order) =>API.post('/orders',order)

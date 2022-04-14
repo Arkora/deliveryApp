@@ -3,13 +3,8 @@ import Food from '../models/Food.js';
 
 
 export const createFood = async (req,res) =>{
-    const food = new Food({
-        title : req.body.title,
-        price : req.body.price,
-        img : req.body.img,
-        ingrendients: req.body.ingrendients,
-        category : req.body.category
-    })
+    const {title,price,img,ingrendients,category} = req.body
+    const food = new Food({title,price,img,ingrendients,category})
 
     
       

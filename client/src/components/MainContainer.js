@@ -14,23 +14,20 @@ overflow-y: hidden;
 
 export const Main = styled.div`
 width: 800px;
-height: 850px;
+height: 600px;
 background-color: #e1dad2;
 display: flex;
 margin: auto;
-width: 800px;
-height: 850px;
 background-color: #e1dad2;
-margin-top: 50px;
-margin-bottom: 50px;
+margin-bottom:20px ;
 border-radius: 20px;
-box-shadow: 10px 1px 60px 10px grey;
+box-shadow: 10px 1px 15px 10px grey;
 overflow-y:hidden ;
 `;
 
 export const InnerContainer = styled.div`
 width: 750px;
-height: 800px;
+height: 550px;
 background-color: #0c2431 ;
 overflow-y: scroll;
 margin: auto;

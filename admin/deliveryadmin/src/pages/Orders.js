@@ -1,23 +1,43 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styled from 'styled-components'
 import AdminPanel from '../components/adminPanel/AdminPanel'
+import OrdersList from '../components/orderList/OrdersList'
+import { getOrders } from '../api'
 
 const ContentSection = styled.div`
-    height: 80vh;
-    width: max-content;
-    background-color: #3d5a80;
-    display: flex;
-    margin :auto;
-    margin-top: 20px;
+     height: 90vh;
+  background-color: #3256D4;
+  width: 1000px;
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 20px;
+  top: 20px;
+  overflow-y: scroll;
 `
 
 
 function Orders() {
+
+  const [orders, setOrders] = useState([])
+
+  const fetchOrders = async () =>{
+    try {
+      const {data} = await getOrders()
+      setOrders(data)      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(()=>{
+    fetchOrders()
+  },[orders])
+
   return (
     <div>
       <AdminPanel />
       <ContentSection>
-      <h1>Orders</h1>
+        <OrdersList orders={orders}/>
       </ContentSection>
       
     </div>
