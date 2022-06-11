@@ -9,7 +9,7 @@ const ContentSection = styled.div`
   background-color: #3256D4;
   width: 1000px;
   position: absolute;
-  margin-left: 20%;
+  margin-left: 21%;
   margin-top: 20px;
   top: 20px;
   overflow-y: scroll;

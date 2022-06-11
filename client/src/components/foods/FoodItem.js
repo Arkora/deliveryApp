@@ -56,6 +56,7 @@ const pushOrder = (e) =>{
                     <DecreaseButton onClick={decrease} > - </DecreaseButton>
                     <QuantityInput  value={quantity}  onChange={(e) =>setQuantity(e.target.value)} />                   
                     <CartButton onClick={pushOrder} > <CartIcon/>  </CartButton>
+                    <h3>{price}$</h3>
                 </div>
 
             </Grid>

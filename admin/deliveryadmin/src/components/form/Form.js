@@ -35,7 +35,7 @@ const handleDelete = async (e) =>{
 const handleForm = async (e) =>{ 
   if(id){
     try {
-      const {data,status} = await updateFood(id,food)
+      const {data} = await updateFood(id,food)
       alert(data)    
       navigate("/")   
     } catch (error) {
@@ -43,7 +43,7 @@ const handleForm = async (e) =>{
     }
   }else{
     try {
-      const {data,status} = await createFood(food)
+      const {data} = await createFood(food)
       alert(data)    
       
     } catch (error) {

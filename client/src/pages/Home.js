@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import {Main,OuterContainer,InnerContainer,HeaderContainer,FoodContainer} from '../components/MainContainer'
+import {Main,OuterContainer,InnerContainer,HeaderContainer} from '../components/MainContainer'
 import Header from '../components/nav/Header'
 import FoodList from '../components/foods/FoodList';
 import Categories from '../components/nav/Categories';

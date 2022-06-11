@@ -1,6 +1,6 @@
 import {Main,OuterContainer,InnerContainer,HeaderContainer} from '../components/MainContainer'
 import Header from '../components/nav/Header'
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 
 import Basket from '../components/cart/Basket';
 
@@ -14,7 +14,7 @@ const Orders = () => {
           <Main>
             <InnerContainer>
               <HeaderContainer>
-                <Header  setCategory = {setCategory} setSearch = {setSearch}/>                
+                <Header  setCategory = {setCategory} setSearch = {setSearch}/>           
               </HeaderContainer>
               <Basket />                    
             </InnerContainer>        

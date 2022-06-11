@@ -9,14 +9,7 @@ const Accordion = ({id,products,total,message,time}) => {
     const toggle = () =>{
       setIsClicked(!isClicked)
     }
-
-    const handleReady = async(id) => {
-      try {
-          await deleteOrder(id)
-      } catch (error) {
-          console.log(error)
-      }
-    }
+    
 
   return (
     <Container>

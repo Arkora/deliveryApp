@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import AdminPanel from '../components/adminPanel/AdminPanel';
 import Form from '../components/form/Form';
@@ -12,13 +12,7 @@ const FormSection = styled.div`
     display: flex;
     margin :auto;
     margin-top: 20px;
-`
-
-const PreviewSection = styled.div`
-    height: 100vh;
-    width: max-content;
-`
-
+    `
 
 function FoodUpload() {
     

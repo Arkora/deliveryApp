@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import React, {useState,useEffect} from 'react';
-import Basket from "../cart/Basket";
 import {House}  from "@styled-icons/bootstrap";
 import {Basket3 as Basket2}  from "@styled-icons/bootstrap";
-import { Link,Redirect } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useSelector } from "react-redux";
 
 
