@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import { Grid,OrdersContainer,DescriptionContainer,TrashIcon,Quantity,DeleteButton,Ingrendients,Item,OrdersList,Footer,Button, TextArea } from "./styles";
 import { useSelector,useDispatch } from "react-redux";
 import { createOrder } from "../../api";
