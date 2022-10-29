@@ -1,0 +1,4 @@
+export const DELETE_FOODS = 'DELETE_FOODS';
+export const FETCH_FOODS = 'FETCH_FOODS';
+export const FETCH_FOODS_BY_SEARCH = 'FETCH_FOODS_BY_SEARCH';
+
