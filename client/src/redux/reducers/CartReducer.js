@@ -10,29 +10,39 @@ import { ADD_CART,REMOVE_CART,DELETE_INGRENDIENT,UPDATE_QUANTITY,DELETE_CART } f
       case ADD_CART:
         let exists = state.products.find((item) => item.id === payload.id)               
         var product = {}
-        var addTotal = state.total
+        var addTotal = 0
         var subTotal = 0
         var newQuantity
-        if(!exists) {
+        if(!exists && payload.quantity === 0) {          
+          subTotal =  Number(payload.price)*1
+          product = {id:payload.id,title:payload.title,quantity:1,price:Number(payload.price),subTotal:subTotal,ingrendients:payload.ingrendients}
+          state.products.push(product)
+        }else if(!exists) {          
           subTotal =  Number(payload.price)*Number(payload.quantity)
           product = {id:payload.id,title:payload.title,quantity:payload.quantity,price:Number(payload.price),subTotal:subTotal,ingrendients:payload.ingrendients}
-          addTotal +=subTotal
           state.products.push(product)
+        }else if(exists && payload.quantity === 0){
+          product = exists          
+          newQuantity = Number(product.quantity) + 1
+          product.quantity = String(newQuantity)
+          product.subTotal += Number(payload.price)
         }else{
           product = exists          
           newQuantity = Number(product.quantity) + Number(payload.quantity)
           product.quantity = String(newQuantity)
           subTotal = Number(payload.price)*newQuantity
           product.subTotal += subTotal
-          addTotal +=subTotal
-        }
+        }    
+        state.products.forEach(element => {
+          addTotal += element.subTotal
+        });    
         return{...state,products:[...state.products],total:addTotal}
         
       case REMOVE_CART:
          let clone = state.products;
-        product = state.products.find((item) => item.id === payload)
+        product = state.products.find((item) => item.id === payload)       
         addTotal = state.total - product.subTotal
-        clone.splice(clone.indexOf(product),1)
+        clone.splice(clone.indexOf(product),1)       
         return{...state,products:clone,total:addTotal}
 
       case DELETE_INGRENDIENT:               

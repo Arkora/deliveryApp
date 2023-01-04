@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 
 
-export const Header = ({setCategory,setSearch}) =>{
+export const Header = ({setCategory}) =>{
 
 
 
@@ -25,7 +25,6 @@ export const Header = ({setCategory,setSearch}) =>{
                 </Link>  
                 
                 <div className="flex justify-center w-full" >
-                    <input className="lg:w-[400px] sm:mx-10 rounded-sm lg:mx-32 h-10 text-center"  placeholder="Search"  onChange={(e) => setSearch(e.target.value)}/>             
                 </div>
                 <Link className="flex justify-end" to="/orders" >
                  <div className="w-12  bg-[#d8a28c] h-12 rounded-sm flex justify-center items-center">   <BsBasket size={25}  /> </div>

@@ -1,13 +1,88 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }  
+  }
+
+  @layer base {
+    h1 {
+      @apply text-6xl;
+    }
+    h2 {
+      @apply text-5xl;
+    }
+    h3{
+      @apply text-4xl;
+    }
+    h4{
+      @apply text-3xl;
+    }
+    h5{
+      @apply text-2xl;
+    }  
+    h6{
+      @apply text-xl;
+    }  
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.outer{
+    @apply
+    w-full
+    h-full
+    flex
+    overflow-hidden
+    justify-center
+    items-center
 }
+.main{
+    @apply
+    w-[800px]
+    h-[600px]
+    bg-[#e1dad2]
+    flex
+    justify-center
+    items-center
+    mb-5
+    rounded-[20px]
+    shadow-2xl 
+    shadow-zinc-900  
+
+}
+
+
+
+.inner{
+    @apply
+    w-[750px]
+    h-[550px]
+    bg-[#0c2431]
+    overflow-hidden
+    overflow-y-auto
+    no-scrollbar 
+    
+    
+}
+
+
+
+
+
+/* export const ItemContainer = styled.div`
+    width: max-content;
+`
+
+export const CenteredMain = styled.div`
+    width: 500px;
+    
+` */
