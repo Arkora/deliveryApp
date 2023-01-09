@@ -5,7 +5,7 @@
 #### Client 
 ##### React Js, Axios, Styled-Components,Redux
 #### Admin
-##### React Js, Axios, Styled-Components,Redux
+[Link to Repo](!https://github.com/Arkora/delivery-admin)
 #### API 
 ##### MongoDB,Express,Nodejs
 

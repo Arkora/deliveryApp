@@ -42,7 +42,7 @@ const CartItem = ({item}) => {
         </div>
         <div className='flex justify-between'>
             <form onSubmit={changeQuantity} >
-                <input placeholder={item.quantity} className='w-5 h-5' onChange={(e) =>setQuantity(e.target.value)}/>
+                <input  placeholder={item.quantity} className='w-5 h-5' onChange={(e) =>setQuantity(e.target.value)}/>
             </form>
         </div>
         <div className='flex justify-between'>

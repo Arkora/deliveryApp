@@ -35,7 +35,7 @@ const pushOrder = (e) =>{
     
     <div className="w-full h-44 bg-emerald-900  overflow-y-auto no-scrollbar p-2 rounded-md text-white my-4">
         <h3>{title}</h3>
-        <div className="grid grid-cols-3 mt-2 gap-2 w-3/4 h-3/4 ">
+        <div className="grid grid-cols-4 mt-2 gap-2  h-3/4 ">
             <div className="">
                 <img src={img}  className="w-full h-1/2"/>
             </div>
@@ -55,6 +55,9 @@ const pushOrder = (e) =>{
                         <BsCart2 />
                     </div>
                 </div>
+            </div>
+            <div className="flex justify-end">
+                <h3>{price}$</h3>
             </div>
         </div>
     </div>

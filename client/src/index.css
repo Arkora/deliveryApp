@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 @layer utilities {
-    /* Chrome, Safari and Opera */
+    
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
   
     .no-scrollbar {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; 
+      scrollbar-width: none; 
     }  
   }
 
@@ -69,20 +69,10 @@
     bg-[#0c2431]
     overflow-hidden
     overflow-y-auto
-    no-scrollbar 
-    
+    no-scrollbar     
     
 }
 
 
 
 
-
-/* export const ItemContainer = styled.div`
-    width: max-content;
-`
-
-export const CenteredMain = styled.div`
-    width: 500px;
-    
-` */
